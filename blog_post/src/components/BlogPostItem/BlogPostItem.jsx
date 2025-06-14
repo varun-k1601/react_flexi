@@ -17,6 +17,9 @@ const BlogPostItem = ({ title, summary, date, url }) => {
       </Link>
       <p className={styles.summary}>{summary}</p>
       <p className={styles.date}>Published on {formattedDate}</p>
+      <Link to={url} className={styles.readMoreBtn}>
+        Read More
+      </Link>
     </article>
   );
 };
@@ -28,4 +31,4 @@ BlogPostItem.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default BlogPostItem; 
+export default BlogPostItem;
