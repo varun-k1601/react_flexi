@@ -5,17 +5,28 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .blogPostItem:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.08);
 }
 
 .titleLink {
   text-decoration: none;
   color: inherit;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .title {
@@ -23,7 +34,7 @@
   font-weight: bold;
   color: #333333;
   margin: 0 0 15px 0;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s;
 }
 
 .titleLink:hover .title {
@@ -41,24 +52,65 @@
 .date {
   font-size: 14px;
   color: #999999;
-  margin: 0;
+  margin: 0 0 10px 0;
 }
 
-/* Mobile View */
-@media (max-width: 768px) {
-  .blogPostItem {
-    padding: 15px;
-  }
+.readMoreBtn {
+  align-self: flex-start;
+  background: linear-gradient(90deg, #007BFF 60%, #0056b3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+.readMoreBtn:hover {
+  background: linear-gradient(90deg, #0056b3 60%, #007BFF 100%);
+  box-shadow: 0 4px 16px rgba(0,123,255,0.12);
+  transform: translateY(-2px) scale(1.03);
+}
 
+@media (max-width: 900px) {
+  .blogPostItem {
+    padding: 14px;
+    border-radius: 8px;
+  }
   .title {
     font-size: 20px;
   }
-
   .summary {
     font-size: 14px;
   }
-
   .date {
     font-size: 12px;
   }
-} 
+  .readMoreBtn {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .blogPostItem {
+    padding: 8px;
+    border-radius: 0;
+  }
+  .title {
+    font-size: 17px;
+  }
+  .summary {
+    font-size: 12px;
+  }
+  .date {
+    font-size: 10px;
+  }
+  .readMoreBtn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

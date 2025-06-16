@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90vw;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  font-family: 'Roboto', Arial, sans-serif;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .dialog {
+    width: 95vw;
+    padding: 18px 8px 12px 8px;
+    max-width: 98vw;
+  }
+}
+
+.dialog h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+.dialog p {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 30px 0;
+}
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+.cancelBtn {
+  background: #CCCCCC;
+  color: #222;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.cancelBtn:focus {
+  box-shadow: 0 0 0 2px #007BFF;
+}
+.deleteBtn {
+  background: #FF0000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.deleteBtn:focus {
+  box-shadow: 0 0 0 2px #007BFF;
+}
+.deleteBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .dialog {
+    width: 90vw;
+    padding: 18px 8px 12px 8px;
+    max-width: 95vw;
+  }
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .cancelBtn, .deleteBtn {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}
