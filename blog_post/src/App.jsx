@@ -4,6 +4,7 @@ import BlogPostList from './components/BlogPostList/BlogPostList';
 import BlogPostDetail from './components/BlogPostDetail/BlogPostDetail';
 import BlogPostForm from './components/BlogPostForm/BlogPostForm';
 import BlogPostDelete from './components/BlogPostDelete/BlogPostDelete';
+import Layout from './components/Layout/Layout';
 import './App.css';
 
 // Initial sample blog posts data
@@ -110,32 +111,28 @@ function App() {
   const [posts, setPosts] = useState(initialPosts);
   const navigate = useNavigate();
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>My Blog</h1>
-      </header>
-      <main className="app-main">
-        <Routes>
-          <Route path="/" element={
-            <>
-              <div style={{ textAlign: 'right', maxWidth: 1400, margin: '0 auto 16px auto' }}>
-                <button
-                  onClick={() => navigate('/create')}
-                  style={{ margin: '16px 0', padding: '10px 24px', background: '#007BFF', color: '#fff', border: 'none', borderRadius: 6, fontSize: 16, cursor: 'pointer' }}
-                >
-                  Create New Post
-                </button>
-              </div>
-              <BlogPostList posts={posts} />
-            </>
-          } />
-          <Route path="/create" element={<BlogPostFormWrapper posts={posts} setPosts={setPosts} isEdit={false} />} />
-          <Route path="/edit/:id" element={<BlogPostFormWrapper posts={posts} setPosts={setPosts} isEdit={true} />} />
-          <Route path="/posts/:id" element={<BlogPostDetailWrapper posts={posts} setPosts={setPosts} />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </main>
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <div style={{ textAlign: 'right', maxWidth: 1400, margin: '0 auto 16px auto' }}>
+              <button
+                onClick={() => navigate('/create')}
+                style={{ margin: '16px 0', padding: '10px 24px', background: '#007BFF', color: '#fff', border: 'none', borderRadius: 6, fontSize: 16, cursor: 'pointer' }}
+              >
+                Create New Post
+              </button>
+            </div>
+            <BlogPostList posts={posts} />
+          </>
+        } />
+        <Route path="/create" element={<BlogPostFormWrapper posts={posts} setPosts={setPosts} isEdit={false} />} />
+        <Route path="/edit/:id" element={<BlogPostFormWrapper posts={posts} setPosts={setPosts} isEdit={true} />} />
+        <Route path="/posts/:id" element={<BlogPostDetailWrapper posts={posts} setPosts={setPosts} />} />
+        <Route path="/about" element={<div style={{padding:'2rem',textAlign:'center'}}><h2>About</h2><p>This is a demo blog app built with React.</p></div>} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Layout>
   );
 }
 
