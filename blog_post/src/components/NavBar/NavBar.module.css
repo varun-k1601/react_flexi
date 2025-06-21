@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  background: #003366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  padding: 0 32px;
+  font-family: 'Roboto', Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 0;
+}
+.link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.2s;
+  padding: 8px 0;
+}
+.link:focus, .link:hover {
+  color: #66aaff;
+  outline: 2px solid #007BFF;
+  outline-offset: 2px;
+}
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  margin-left: 20px;
+  outline: none;
+  min-width: 44px;
+  min-height: 44px;
+}
+.hamburger:focus {
+  outline: 2px solid #007BFF;
+}
+.mobileMenu {
+  display: none;
+}
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 99;
+}
+@media (max-width: 1100px) {
+  .links {
+    gap: 12px;
+  }
+  .link {
+    font-size: 16px;
+    padding: 6px 0;
+  }
+}
+@media (max-width: 900px) {
+  .navBar {
+    padding: 0 4px;
+  }
+  .links {
+    gap: 8px;
+  }
+}
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    z-index: 101;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .mobileMenuOpen {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .mobileLink {
+    color: #003366;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+    background: #fff;
+  }
+  .mobileLink:focus, .mobileLink:hover {
+    background: #e6f0ff;
+    outline: 2px solid #007BFF;
+    outline-offset: 2px;
+  }
+}
