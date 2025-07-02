@@ -63,6 +63,7 @@ function BlogPostDetailWrapper({ posts, setPosts }) {
         content={post.content}
         author={post.author}
         date={post.date}
+        id={post.id}
       />
       <div style={{ textAlign: 'right', maxWidth: 800, margin: '0 auto' }}>
         <button

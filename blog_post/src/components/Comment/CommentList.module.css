@@ -1,0 +1,8 @@
+.list {
+  margin-bottom: 24px;
+}
+.empty {
+  color: #888;
+  font-style: italic;
+  padding: 12px 0;
+}
