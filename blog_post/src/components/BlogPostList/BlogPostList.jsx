@@ -3,11 +3,19 @@ import PropTypes from 'prop-types';
 import BlogPostItem from '../BlogPostItem/BlogPostItem';
 import styles from './BlogPostList.module.css';
 
-const BlogPostList = ({ posts }) => {
+const highlight = (text, term) => {
+  if (!term) return text;
+  const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  return text.split(regex).map((part, i) =>
+    regex.test(part) ? <mark key={i} style={{background:'#fff59d',padding:0}}>{part}</mark> : part
+  );
+};
+
+const BlogPostList = ({ posts, searchQuery }) => {
   if (!posts || posts.length === 0) {
     return (
-      <div className={styles.emptyState}>
-        <p>No blog posts available.</p>
+      <div className={styles.emptyState} aria-live="polite">
+        <p>No posts found.</p>
       </div>
     );
   }
@@ -17,8 +25,8 @@ const BlogPostList = ({ posts }) => {
       {posts.map((post) => (
         <BlogPostItem
           key={post.id}
-          title={post.title}
-          summary={post.summary}
+          title={highlight(post.title, searchQuery)}
+          summary={highlight(post.summary, searchQuery)}
           date={post.date}
           url={post.url}
         />
@@ -39,4 +47,4 @@ BlogPostList.propTypes = {
   ).isRequired,
 };
 
-export default BlogPostList; 
+export default BlogPostList;

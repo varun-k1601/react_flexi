@@ -37,6 +37,7 @@
   font-size: 18px;
   transition: color 0.2s;
   padding: 8px 0;
+  margin-left: 8px;
 }
 .link:focus, .link:hover {
   color: #66aaff;
@@ -66,6 +67,19 @@
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.3);
   z-index: 99;
+}
+.searchDesktop {
+  display: flex;
+  align-items: center;
+  margin-left: 32px;
+}
+.centerGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 32px;
+  margin-left: 912px;
 }
 @media (max-width: 1100px) {
   .links {
@@ -124,5 +138,42 @@
     background: #e6f0ff;
     outline: 2px solid #007BFF;
     outline-offset: 2px;
+  }
+  .searchDesktop {
+    display: none;
+  }
+  .mobileSearchIcon {
+    display: inline-flex !important;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    margin-left: 8px;
+    cursor: pointer;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .mobileSearchBar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    padding: 12px 12px 12px 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    gap: 8px;
+  }
+  .cancelBtn {
+    background: none;
+    border: none;
+    color: #1976d2;
+    font-size: 1em;
+    margin-left: 8px;
+    cursor: pointer;
+    padding: 6px 12px;
   }
 }

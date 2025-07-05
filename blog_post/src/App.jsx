@@ -5,6 +5,7 @@ import BlogPostDetail from './components/BlogPostDetail/BlogPostDetail';
 import BlogPostForm from './components/BlogPostForm/BlogPostForm';
 import BlogPostDelete from './components/BlogPostDelete/BlogPostDelete';
 import Layout from './components/Layout/Layout';
+import NavBar from './components/NavBar/NavBar';
 import './App.css';
 
 // Initial sample blog posts data
@@ -110,13 +111,25 @@ function BlogPostFormWrapper({ posts, setPosts, isEdit }) {
 
 function App() {
   const [posts, setPosts] = useState(initialPosts);
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+
+  // Search logic: filter by title or content, case-insensitive
+  const filteredPosts = searchQuery
+    ? posts.filter(
+        (p) =>
+          p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.content.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : posts;
+
   return (
-    <Layout>
+    <Layout navBar={<NavBar onSearch={setSearchQuery} />}> {/* pass onSearch to NavBar */}
       <Routes>
         <Route path="/" element={
           <>
-            <div style={{ textAlign: 'right', maxWidth: 1400, margin: '0 auto 16px auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', textAlign: 'right', maxWidth: 1400, margin: '0 auto 16px auto' }}>
+              <div style={{ fontSize: '2rem', fontWeight: 600, color: '#003366', letterSpacing: '1px' }}>Blog Posts</div>
               <button
                 onClick={() => navigate('/create')}
                 style={{ margin: '16px 0', padding: '10px 24px', background: '#007BFF', color: '#fff', border: 'none', borderRadius: 6, fontSize: 16, cursor: 'pointer' }}
@@ -124,7 +137,7 @@ function App() {
                 Create New Post
               </button>
             </div>
-            <BlogPostList posts={posts} />
+            <BlogPostList posts={filteredPosts} searchQuery={searchQuery} />
           </>
         } />
         <Route path="/create" element={<BlogPostFormWrapper posts={posts} setPosts={setPosts} isEdit={false} />} />
